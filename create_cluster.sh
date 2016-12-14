@@ -18,7 +18,7 @@ function detect_glusterd_nodes {
     sleep $CHECK_INTERVAL
     elapsed=$((elapsed + CHECK_INTERVAL))
     for peer_ip in "${IP_LIST[@]}"; do
-      "Scanning host:$peer_ip port:$GLUSTERD_PORT with netcat.."
+      log_msg "Scanning host:$peer_ip port:$GLUSTERD_PORT with netcat.."
       if port_open $peer_ip $GLUSTERD_PORT; then
         log_msg "glusterd detected on $peer_ip"
         FOUND_OPEN=$((FOUND_OPEN + 1)) 
