@@ -27,5 +27,5 @@ ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 ADD entrypoint.sh /build/entrypoint.sh
 ADD utils.sh /build/utils.sh
 ADD create_cluster.sh /build/create_cluster.sh
-RUN ["/bin/bash", "-c", "mkdir -p /gluster/brick1"]
+RUN ["/bin/bash", "-c", "mkdir -p /exp/gluster1"]
 ADD fstab /etc/fstab
