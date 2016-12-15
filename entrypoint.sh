@@ -80,6 +80,8 @@ fi
 if ! check_running_gluster; then
   # According /etc/fstab to mount directories
   mount -a
+  
+  mkdir -p /exp/gluster1/brick1
 
   get_own_ip
   configure_network
