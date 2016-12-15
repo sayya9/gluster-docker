@@ -4,6 +4,7 @@ if [ -e /build/utils.sh ]; then
   . /build/utils.sh
 fi
 
+
 function check_running_gluster {
   netstat -tan | grep 24007 | grep -v TIME_WAIT &> /dev/null
   return $?
@@ -77,6 +78,8 @@ if [ ! -e /etc/glusterfs/glusterd.vol ]; then
 fi
 
 if ! check_running_gluster; then
+  # According /etc/fstab to mount directories
+  mount -a
 
   get_own_ip
   configure_network
@@ -90,6 +93,7 @@ if ! check_running_gluster; then
   else
     log_msg "Using peer definition from previous container start"
   fi
+
 
   # run gluster
   /usr/sbin/glusterd -N -p /var/run/glusterd.pid
