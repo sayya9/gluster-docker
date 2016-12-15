@@ -11,7 +11,8 @@ spec:
         app: gluster
     spec:
       hostNetwork: true
-#     nodeSelector:
+      nodeSelector:
+        node: storage
       containers:
       - name: glusterd
         image: jaohaohsuan/gluster-docker:3.7-xenial
