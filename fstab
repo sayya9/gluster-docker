@@ -1,1 +1,1 @@
-/dev/sdb1 /gluster/brick1 ext4 defaults 0 1
+/dev/sdb1 /gluster/brick1 xfs defaults 0 1
