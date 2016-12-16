@@ -83,6 +83,8 @@ if ! check_running_gluster; then
   
   mkdir -p /exp/gluster1/brick1
 
+  mkdir -p /exp/gluster1/brick1
+  
   get_own_ip
   configure_network
 

@@ -1,0 +1,29 @@
+---
+kind: DaemonSet
+apiVersion: extensions/v1beta1
+metadata:
+  name: gluster-daemonset
+spec:
+  template:
+    metadata:
+      name: gluster
+      labels:
+        app: gluster
+    spec:
+      hostNetwork: true
+#     nodeSelector:
+      containers:
+      - name: glusterd
+        image: jaohaohsuan/gluster-docker:3.7-xenial
+        imagePullPolicy: IfNotPresent
+        #command: [ "sh", "-c", "echo 'running since '`date +'%r'`; while true; do sleep 600; done"]
+        args: ["/build/entrypoint.sh"]
+        volumeMounts:
+        - name: devtree
+          mountPath: "/dev"
+        securityContext:
+          privileged: true
+      volumes:
+      - name: devtree
+        hostPath:
+          path: "/dev"

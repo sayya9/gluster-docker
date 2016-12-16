@@ -1,0 +1,10 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: gluster
+spec:
+  selector:
+    app: gluster
+  ports:
+    - port: 24007
