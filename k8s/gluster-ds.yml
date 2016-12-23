@@ -10,15 +10,18 @@ spec:
       labels:
         app: gluster
     spec:
-      hostNetwork: true
       nodeSelector:
         node: storage
       containers:
       - name: glusterd
-        image: jaohaohsuan/gluster-docker:3.7-xenial
+        image: jaohaohsuan/gluster-docker:3.7.18
         imagePullPolicy: IfNotPresent
-        #command: [ "sh", "-c", "echo 'running since '`date +'%r'`; while true; do sleep 600; done"]
         args: ["/build/entrypoint.sh"]
+        env:
+          - name: TERM
+            value: xterm
+        ports:
+        - containerPort: 24007
         volumeMounts:
         - name: devtree
           mountPath: "/dev"
@@ -30,6 +33,7 @@ spec:
           mountPath: "/var/lib/glusterd"
         securityContext:
           privileged: true
+      hostNetwork: true
       volumes:
       - name: devtree
         hostPath:
