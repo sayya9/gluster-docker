@@ -31,6 +31,8 @@ spec:
           mountPath: "/var/log/glusterfs"
         - name: glusterfs-config
           mountPath: "/var/lib/glusterd"
+        - name: glusterfs-etc-hosts
+          mountPath: "/etc/hosts"
         securityContext:
           privileged: true
       hostNetwork: true
@@ -47,3 +49,6 @@ spec:
       - name: glusterfs-config
         hostPath:
           path: "/var/lib/glusterd"
+      - name: glusterfs-etc-hosts
+        hostPath:
+          path: "/etc/hosts"
